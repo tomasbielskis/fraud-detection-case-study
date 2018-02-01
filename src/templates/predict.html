@@ -1,0 +1,15 @@
+
+
+<!-- <p><a href="{{ url_for('submission_page') }}">Text</a></p> -->
+
+
+<table>
+  <thead>
+  <tbody>
+    {% for fraud, prob in predictions.items() %}
+      <tr>
+        <td>'fraudulent event:'{{ fraud }}'probability'{{ prob }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
