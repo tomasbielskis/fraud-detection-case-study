@@ -132,7 +132,11 @@ if __name__ == '__main__':
     client = MongoClient()
     db = client[DB_NAME]
     coll = db[COLLECTION_NAME]
-    cd.X['fraud'] = nm.predict(cd.X)
+
+    cd.df['Fraud'] = nm.predict(cd.X)
+    cd.df['Probability'] = nm.predict_proba(cd.X)[0][1]
+
     # coll.remove({})
 
-    coll.insert(cd.X.to_dict('records'))
+    coll.insert(cd.df.to_dict('records'))
+    print(cd.df.to_dict('records'))
