@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
     # check database
     new_events = get_new_data()
-    X = split_data(new_events, for_predict=True)
-    predictions = model.predict(X)
-    # predictions = {'event1':'probability1'}
+    # X = split_data(new_events, for_predict=True)
+    # predictions = model.predict(X)
+    predictions = {'event1':'probability1'}
     application.run(host='0.0.0.0', port=8080, debug=True)
