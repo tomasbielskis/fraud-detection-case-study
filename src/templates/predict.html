@@ -6,13 +6,13 @@
 <table>
   <thead>
     <td>Fraudulent event</td>
-    <td>Probability</td>
+    <!-- <td>Probability</td> -->
 
   <tbody>
-    {% for fraud, prob in predictions.items() %}
+    {% for event in predictions %}
       <tr>
-        <td>{{ fraud }}</td>
-        <td>{{ prob }}</td>
+        <td>{{ event }}</td>
+        <!-- <td>{{ prob }}</td> -->
 
       </tr>
     {% endfor %}

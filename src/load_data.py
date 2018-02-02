@@ -16,8 +16,8 @@ def get_value_payouts(row):
 
 
 def load_data_frame(json_file):
-    df = json_file
-    # df = pd.read_json(json_file)
+    # df = json_file
+    df = pd.read_json(json_file)
     fraud_acct = {'fraudster_event','fraudster','fraudster_att'}
     df['fraud_flag'] = df.acct_type.apply(lambda x: x in fraud_acct)
     df['ticket_types_max_profit'] = df.ticket_types.apply(get_max_profit)
