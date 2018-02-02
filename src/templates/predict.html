@@ -5,10 +5,15 @@
 
 <table>
   <thead>
+    <td>Fraudulent event</td>
+    <td>Probability</td>
+
   <tbody>
     {% for fraud, prob in predictions.items() %}
       <tr>
-        <td>'fraudulent event:'{{ fraud }}'probability'{{ prob }}</td>
+        <td>{{ fraud }}</td>
+        <td>{{ prob }}</td>
+
       </tr>
     {% endfor %}
   </tbody>

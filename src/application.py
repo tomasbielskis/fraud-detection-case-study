@@ -1,9 +1,12 @@
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 import pandas as pd
 import numpy as np
 import pickle
 import os
 from flask import Flask, request, render_template
 import requests
+from load_data import split_data
+
 
 application = Flask(__name__)
 
@@ -14,7 +17,7 @@ def get_new_data():
     response = requests.post(url, json={'api_key': api_key,
                                 'sequence_number': sequence_number})
     raw_data = response.json()
-    return raw_data
+    return pd.DataFrame.from_dict(raw_data['data'][0],orient='index')
 
 # home page
 @application.route('/')
@@ -37,9 +40,12 @@ def post_recommender():
     return render_template('predict.html',predictions=predictions)
 
 if __name__ == '__main__':
-
-    # model = pickle.load(open('path to model', 'rb'))
+    with open('model.pkl', 'rb') as f:
+        model = pickle.load(f, encoding='latin1')
 
     # check database
-    # get_new_data()
+    new_events = get_new_data()
+    X = split_data(new_events, for_predict=True)
+    predictions = model.predict(X)
+    # predictions = {'event1':'probability1'}
     application.run(host='0.0.0.0', port=8080, debug=True)
