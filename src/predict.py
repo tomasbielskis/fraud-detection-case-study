@@ -139,4 +139,4 @@ if __name__ == '__main__':
     # coll.remove({})
 
     coll.insert(cd.df.to_dict('records'))
-    print(cd.df.to_dict('records'))
+    # print(cd.df.to_dict('records'))

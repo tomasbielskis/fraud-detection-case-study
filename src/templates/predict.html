@@ -19,7 +19,14 @@
         <td>{{ event['description']|safe }}</td>
         <td>{{ event['org_name'] }}</td>
 
-        <td>{{ event['Fraud'] }}</td>
+        <!-- <td>{{ event['Fraud'] }}</td> -->
+        <td>
+        {% if event['Fraud'] == True %}
+          <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ event['Fraud'] }}</p>
+        {% else %}
+          <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ event['Fraud'] }}</p>
+        {% endif %}
+        </td>
         <td>{{ event['Probability'] }}</td>
 
       </tr>
